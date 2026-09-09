@@ -23,6 +23,8 @@ const navItems = [
   // { href: "/dashboard/basic-chat", label: "Basic Chat", icon: "chat" }, // Hidden
   { href: "/dashboard/combos", label: "Combo & Vision Adapter", icon: "layers" },
   { href: "/dashboard/arena", label: "Model Arena", icon: "swords" },
+  { href: "/dashboard/live", label: "Live Feed", icon: "bolt" },
+  { href: "/dashboard/masks", label: "Model Masking", icon: "masks" },
   { href: "/dashboard/usage", label: "Usage", icon: "bar_chart" },
   { href: "/dashboard/quota", label: "Quota Tracker", icon: "data_usage" },
   { href: "/dashboard/token-saver", label: "Token Saver", icon: "savings" },
