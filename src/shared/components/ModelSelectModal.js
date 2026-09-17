@@ -351,9 +351,13 @@ export default function ModelSelectModal({
         };
       } else {
         const liveModels = providerId === "cursor" ? cursorModels : providerId === "clinepass" ? clinepassModels : [];
-        const hardcodedModels = liveModels.length > 0
+        const baseHardcodedModels = liveModels.length > 0
           ? liveModels
           : getModelsByProviderId(providerId);
+        const isGitHubCopilot = providerId === "github" || alias === "gh";
+        const hardcodedModels = isGitHubCopilot && !baseHardcodedModels.some((m) => m.id === "auto")
+          ? [{ id: "auto", name: "Auto", vision: true }, ...baseHardcodedModels]
+          : baseHardcodedModels;
         const hardcodedIds = new Set(hardcodedModels.map((m) => m.id));
 
         // Custom models: if no hardcoded models (e.g. openrouter), show all aliases for this provider
@@ -448,7 +452,7 @@ export default function ModelSelectModal({
       let models = group.models;
       // Filter by input-modality capability (vision/pdf/audioInput/videoInput).
       if (capFilter) {
-        models = models.filter((m) => getCaps(m.value)?.[capFilter] === true);
+        models = models.filter((m) => getCaps(m.value)?.[capFilter] === true || m[capFilter] === true);
         if (models.length === 0) return;
       }
       if (query) {

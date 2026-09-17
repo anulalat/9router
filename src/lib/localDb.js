@@ -10,9 +10,7 @@ export {
   createProviderNode, updateProviderNode, deleteProviderNode,
   getProxyPools, getProxyPoolById,
   createProxyPool, updateProxyPool, deleteProxyPool,
-  getApiKeys, getApiKeyById, getApiKeyByKey, createApiKey, updateApiKey, deleteApiKey, validateApiKey,
-getBudgetGroups, getBudgetGroupById, createBudgetGroup, updateBudgetGroup, deleteBudgetGroup, incrementBudgetGroupUsage,
-cloneApiKey, auditApiKeys,
+  getApiKeys, getApiKeyById, createApiKey, updateApiKey, deleteApiKey, validateApiKey,
   getCombos, getComboById, getComboByName,
   createCombo, updateCombo, deleteCombo,
   getModelAliases, setModelAlias, deleteModelAlias,
@@ -21,3 +19,6 @@ cloneApiKey, auditApiKeys,
   getPricing, getPricingForModel, updatePricing, resetPricing, resetAllPricing,
   exportDb, importDb,
 } from "@/lib/db/index.js";
+
+// NOTE: legacy budget-group and clone/audit helpers were removed from the DB layer.
+// Keep this shim aligned with the actual public db API only.
